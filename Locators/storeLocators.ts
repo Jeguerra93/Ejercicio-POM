@@ -11,6 +11,7 @@ export const StoreLocators = {
     monthInput: {role: 'textbox', name: 'Month:'},
     yearInput: {role: 'textbox', name: 'Year:'},
     purchaseButton: {role: 'button', name: 'Purchase'},
+    //okButton: {id: '.confirm btn btn-lg btn-primary'},
     okButton: {role: 'button', name: 'OK'},
-    categorySection: {id: '#cat'}
+    categorySection: {role: 'link', name: 'CATEGORIES'}
 } as const;

@@ -4,7 +4,7 @@ import { basePage } from '../Pages/basePage';
 import { StoreLocators } from '../Locators/storeLocators';
 
 test.describe('Store Tests', () => {
-    test('By Product Process', async ({ page }) => {
+    test('Buy Product Process', async ({ page }) => {
         const storePage = new StorePage(page);
         const basePageInstancebase = new basePage(page);
 
