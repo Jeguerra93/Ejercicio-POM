@@ -17,7 +17,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install
     - name: Run Playwright tests
-      run: npx playwright test "storePom.spec.ts" --prohject=chromium --reporter=html
+      run: npx playwright test "storePom.spec.ts" --project=chromium --reporter=html
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
