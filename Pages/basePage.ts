@@ -27,9 +27,14 @@ export class basePage {
     await expect(element).toBeVisible();
   }
 
-  async WaitForUrl(urlHome: string) {
-    await this.page.waitForURL(urlHome);
+  async WaitForUrl(urlHome: string, action: () => Promise<void>) {
+
+    await Promise.all([
+      this.page.waitForURL(urlHome),
+      action()
+    ]);
   }
+
 
   async ExpectTitleToContain(title: string) {
     await expect(this.page).toHaveTitle(title);

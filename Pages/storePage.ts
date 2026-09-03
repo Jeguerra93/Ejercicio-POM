@@ -70,7 +70,9 @@ export class StorePage extends basePage {
   }
 
 async clickOkButton() {
-    await this.okButton.click();
+    const okBtn = this.okButton;
+    await okBtn.waitFor({ state: 'visible' }); 
+    await okBtn.press('Enter');
   }
 
 getItemElement() {

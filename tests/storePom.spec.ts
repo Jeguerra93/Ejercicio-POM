@@ -4,7 +4,7 @@ import { basePage } from '../Pages/basePage';
 import { StoreLocators } from '../Locators/storeLocators';
 
 test.describe('Store Tests', () => {
-    test('Add product to cart and place order', async ({ page }) => {
+    test('By Product Process', async ({ page }) => {
         const storePage = new StorePage(page);
         const basePageInstancebase = new basePage(page);
 
@@ -25,7 +25,7 @@ test.describe('Store Tests', () => {
 
         await test.step('Go to cart', async () => {
 
-           
+
             await storePage.goToCartAndPlaceOrder();
 
 
@@ -45,8 +45,15 @@ test.describe('Store Tests', () => {
         });
 
         await test.step('Click OK on confirmation message', async () => {
+           
             await storePage.clickOkButton();
-            await basePageInstancebase.WaitForUrl('https://www.demoblaze.com/index.html');
+
+            /* await basePageInstancebase.WaitForUrl('https://www.demoblaze.com/index.html',
+                 async () => {
+                     await storePage.clickOkButton();
+                 }
+             );*/
+
             await basePageInstancebase.ExpectElementToBeVisible(storePage.getCategorySectionElement());
         });
 
