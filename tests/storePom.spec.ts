@@ -3,6 +3,8 @@ import { StorePage } from '../Pages/storePage';
 import { basePage } from '../Pages/basePage';
 import { StoreLocators } from '../Locators/storeLocators';
 
+
+
 test.describe('Store Tests', () => {
     test('Buy Product Process', async ({ page }) => {
         const storePage = new StorePage(page);
@@ -10,7 +12,9 @@ test.describe('Store Tests', () => {
 
         await test.step('Open Page demoblaze', async () => {
 
-            await basePageInstancebase.loadPage('.env.BASE_URL');
+          //  console.log("Navegando a la URL local:", process.env.BASE_URL);
+
+            await basePageInstancebase.loadPage(process.env.QA_BASE_URL);
 
             await basePageInstancebase.ExpectTitleToContain('STORE');
 
