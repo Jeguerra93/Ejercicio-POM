@@ -18,9 +18,8 @@ jobs:
       run: npm ci --no-audit
     - name: Install Playwright Browsers
       run: npx playwright install
-
     - name: Create .env file
-      run: echo "BASE_URL=${{ secrets.BASE_URL }}" > .env    
+      run: echo "QA_BASE_URL=${{ secrets.QA_BASE_URL }}" > .env    
     - name: Run Playwright tests
       run: npx playwright test "storePom.spec.ts" --project=chromium --reporter=html
     - uses: actions/upload-artifact@v4
