@@ -13,8 +13,9 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+        cache: 'npm'
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --network-timeout=60000 --fetch-retries=2
     - name: Install Playwright Browsers
       run: npx playwright install
 
