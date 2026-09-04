@@ -10,7 +10,7 @@ test.describe('Store Tests', () => {
 
         await test.step('Open Page demoblaze', async () => {
 
-            await basePageInstancebase.loadPage('https://www.demoblaze.com/index.html');
+            await basePageInstancebase.loadPage('.env.BASE_URL');
 
             await basePageInstancebase.ExpectTitleToContain('STORE');
 
