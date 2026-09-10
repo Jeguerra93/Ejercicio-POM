@@ -21,6 +21,7 @@ export class StorePage extends basePage {
 
     constructor(page: Page) {
         super(page);
+        //this.product = page.getByRole('alert', { name: 'Product added' });
         this.product = page.locator(StoreLocators.product.locator);
         this.addToCartButton = page.getByRole(StoreLocators.addToCartButton.role, { name: StoreLocators.addToCartButton.name });        
         this.cartLink = page.getByRole(StoreLocators.cartLink.role, { name: StoreLocators.cartLink.name, exact: StoreLocators.cartLink.exact });
