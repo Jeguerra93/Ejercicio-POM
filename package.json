@@ -1,6 +1,7 @@
 {
   "name": "ejercicio-pom",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {},
@@ -8,8 +9,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^10.6.0",
     "@playwright/test": "^1.62.1",
-    "@types/node": "^26.4.1",
+    "@types/node": "^26.5.1",
     "dotenv": "^17.4.2"
   }
 }

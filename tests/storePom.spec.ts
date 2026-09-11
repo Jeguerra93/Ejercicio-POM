@@ -1,8 +1,9 @@
 //import { test } from '@playwright/test';
 //import { StorePage } from '../Pages/storePage';
-import { test, expect } from '../Fixtures/fixtures';
-import { basePage } from '../Pages/basePage';
-import { StoreLocators } from '../Locators/storeLocators';
+import { test, expect } from '../Fixtures/fixtures.js';
+import { basePage } from '../Pages/basePage.js';
+import { StoreLocators } from '../Locators/storeLocators.js';
+import { DataFaker } from '../Data/dataFaker.js';
 
 
 
@@ -46,7 +47,7 @@ test.describe('Store Tests', () => {
 
             await storePage.ExpectElementToBeVisible(storePage.getTextboxNameElement());
 
-            await storePage.fillOrderForm("John", "Colombia", "Bogota", "122989887771", "8", "2023");
+            await storePage.fillOrderForm(DataFaker.nameFaker, DataFaker.countryFaker, DataFaker.cityFaker, DataFaker.creditCardFaker, DataFaker.monthFaker, DataFaker.yearFaker);
         });
 
         await test.step('Click OK on confirmation message', async () => {
