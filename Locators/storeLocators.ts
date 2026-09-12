@@ -3,7 +3,7 @@ export const StoreLocators = {
     addToCartButton: {role: 'link', name: 'Add to cart'},
     cartLink: {role: 'link', name: 'Cart', exact: true},
     itemDeleteLink: {role: 'link', name: 'Delete'},
-    placeOrderButton: {role: 'button', name: 'Place Order'},
+    placeOrderButton: {rol: 'button', name: 'Place Order'},
     nameInput: {role: 'textbox', name: 'Name:'},
     countryInput: {role: 'textbox', name: 'Country:'},
     cityInput: {role: 'textbox', name: 'City:'},
