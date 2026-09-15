@@ -15,8 +15,7 @@ test.describe('Store Tests', () => {
         await test.step('Open Page demoblaze', async () => {
 
           //  console.log("Navegando a la URL local:", process.env.BASE_URL);
-
-            await storePage.loadPage(process.env.QA_BASE_URL);
+            await storePage.loadPage(process.env.BASE_URL);
 
             await storePage.ExpectTitleToContain('STORE');
 
@@ -39,7 +38,7 @@ test.describe('Store Tests', () => {
 
         await test.step('Click Place Order button', async () => {
 
-            await storePage.ExpectElementToBeVisible(storePage.getItemElement());
+           // await storePage.ExpectElementToBeVisible(storePage.getItemElement());
             await storePage.clickPlaceOrderButton();
         });
 

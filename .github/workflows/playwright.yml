@@ -4,10 +4,20 @@ on:
     branches: [ main, master, QA ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Selecciona el ambiente para la ejecución de las pruebas'
+        required: true
+        default: 'QA'
+        type: choice
+        options:
+          - QA
+          - Producción
 jobs:
   test:
     runs-on: Windows-latest
-    environment: QA
+    environment: ${{ github.event.inputs.environment || 'QA' }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -26,7 +36,9 @@ jobs:
       if: steps.playwright-cache.outputs.cache-hit != 'true'
       run: npx playwright install
     - name: Create .env file
-      run: echo "QA_BASE_URL=${{ secrets.QA_BASE_URL }}" > .env    
+      run: 
+        echo "BASE_URL=${{ secrets.BASE_URL }}" > .env}
+        echo "TEST_ENV=${{ github.event.inputs.environment || 'QA' }}" >> .env   
     - name: Run Playwright tests
       run: npx playwright test "storePom.spec.ts" --project=chromium --reporter=html
     - uses: actions/upload-artifact@v4

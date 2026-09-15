@@ -8,6 +8,7 @@ export class basePage {
   }
 
   async loadPage(url: string) {
+    console.log(`🔗 Intentando navegar a la URL: ${url}`);
     await this.page.goto(url);
   }
 

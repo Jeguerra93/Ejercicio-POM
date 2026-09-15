@@ -9,8 +9,13 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+const enviroment = process.env.TEST_ENV || 'qa';
+
+
+dotenv.config({ path: path.resolve(__dirname, `.env.${enviroment}`) });
+
+console.log(`Using environment: ${enviroment}`);
 
 /**
  * Read environment variables from file.
@@ -38,7 +43,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-     baseURL: process.env.QA_BASE_URL,
+     baseURL: process.env.BASE_URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
    // trace: 'on-first-retry',
