@@ -37,7 +37,7 @@ jobs:
       run: npx playwright install
     - name: Create .env file
       run: 
-        echo "BASE_URL=${{ secrets.BASE_URL }}" > .env}
+        echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
         echo "TEST_ENV=${{ github.event.inputs.environment || 'QA' }}" >> .env   
     - name: Run Playwright tests
       run: npx playwright test "storePom.spec.ts" --project=chromium --reporter=html
