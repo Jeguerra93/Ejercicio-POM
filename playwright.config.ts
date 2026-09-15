@@ -1,9 +1,21 @@
+/*import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import path from 'path';*/
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-dotenv.config({ path: path.resolve(__dirname, '.env') });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
+
+const enviroment = process.env.TEST_ENV || 'qa';
+
+
+dotenv.config({ path: path.resolve(__dirname, `.env.${enviroment}`) });
+
+console.log(`Using environment: ${enviroment}`);
 
 /**
  * Read environment variables from file.
@@ -27,14 +39,15 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html'], ['json']],
+  reporter: [['html'], ['list', { printSteps: true }], ['json']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-     baseURL: process.env.QA_BASE_URL,
+     baseURL: process.env.BASE_URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+   // trace: 'on-first-retry',
+    trace: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */

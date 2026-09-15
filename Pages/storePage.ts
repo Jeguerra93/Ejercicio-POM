@@ -1,6 +1,7 @@
-import {basePage} from "./basePage";
-import {StoreLocators} from "../Locators/storeLocators";
-import {Page, Locator} from "@playwright/test";
+import {basePage} from "./basePage.js";
+import {StoreLocators} from "../Locators/storeLocators.js";
+import Locator from "@playwright/test";
+import Page from "@playwright/test";
 
 export class StorePage extends basePage {
   
