@@ -23,8 +23,15 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
-        cache: 'npm'
+        #cache: 'npm'
+    - name: Cache Node Modules
+      uses: actions/cache@v4
+      id: npm-cache
+      with:
+        path: nomde_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}         
     - name: Install dependencies
+      if: steps.npm-cache.outputs.cache-hit != 'true'
       run: npm ci --no-audit
     - name: Cache Playwright Browsers
       uses: actions/cache@v4
