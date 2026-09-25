@@ -28,7 +28,7 @@ jobs:
       uses: actions/cache@v4
       id: npm-cache
       with:
-        path: nomde_modules
+        path: node_modules
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}         
     - name: Install dependencies
       if: steps.npm-cache.outputs.cache-hit != 'true'
@@ -43,11 +43,18 @@ jobs:
       if: steps.playwright-cache.outputs.cache-hit != 'true'
       run: npx playwright install
     - name: Create .env file
+    #Linux  
+    #run: |
+       #echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
+       # echo "TEST_ENV=${{ github.event.inputs.environment || 'QA' }}" >> .env   
+     #Windows
       run: |
-        echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
-        echo "TEST_ENV=${{ github.event.inputs.environment || 'QA' }}" >> .env   
+        $envName = "${{ github.event.inputs.environment || 'QA' }}".ToLower()
+        # Esto creará un archivo llamado exactamente .env.qa o .env.producción
+        Set-Content -Path ".env.$envName" -Value "BASE_URL=${{ secrets.BASE_URL }}"
+        Add-Content -Path ".env.$envName" -Value "TEST_ENV=${{ github.event.inputs.environment || 'QA' }}"  
     - name: Run Playwright tests
-      run: npx playwright test "storePom.spec.ts" --project=chromium --reporter=html
+      run: npx playwright test "storePom.spec.ts" --project=chromium
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
