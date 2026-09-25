@@ -33,7 +33,7 @@ test('Compra de producto', async ({ page }) => {
   //await page.locator('#name').fill('John');}
   });
 
-  test.step('Completar formulario de compra', async () => {
+  test.step('Completar el formulario de compra', async () => {
   await page.getByRole('textbox', { name: 'Name:' }).fill('John');
   await page.getByRole('textbox', { name: 'Name:' }).press('Tab');
   await page.getByRole('textbox', { name: 'Country:' }).fill('Colombia');
