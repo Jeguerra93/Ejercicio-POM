@@ -40,6 +40,10 @@ export class StorePage extends basePage {
 
     }
 
+    async screenshot(path: string) {
+        await this.page.screenshot({ path: path });
+    }
+
     async selectProduct() {
         await this.product.first().click();
         await this.addToCartButton.click();

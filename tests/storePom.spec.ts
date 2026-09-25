@@ -21,17 +21,19 @@ test.describe('Store Tests', () => {
 
         });
 
-        await test.step('Select product and add to cart', async () => {
-
+        await test.step('Select product and add to car', async () => {
             await storePage.selectProduct();
+            await storePage.screenshot('Capturas/add to car.png');
+
             //await basePageInstancebase.closeDialog();
 
         });
 
         await test.step('Go to cart', async () => {
 
-
             await storePage.goToCartAndPlaceOrder();
+            await storePage.screenshot('Capturas/go to car.png');
+
 
 
         });

@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import path from 'path';*/
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
-import path from 'path';
+/*import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -14,6 +14,16 @@ const enviroment = process.env.TEST_ENV || 'qa';
 
 
 dotenv.config({ path: path.resolve(__dirname, `.env.${enviroment}`) });
+
+console.log(`Using environment: ${enviroment}`);*/
+
+const enviroment = process.env.TEST_ENV || 'qa';
+
+dotenv.config ({
+
+  path: `.env.${enviroment}`
+
+});
 
 console.log(`Using environment: ${enviroment}`);
 
