@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         // El nombre "node18" debe coincidir con el que configuraste en el Paso 2
-        nodejs 'Node26' 
+        nodejs 'NodeJS26' 
     }
     stages {
         stage('Instalación de dependencias') {
